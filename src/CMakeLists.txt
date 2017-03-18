@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.8.7)
-project ("Drug Dose Server")
+project ("DDS")
 include(CheckCXXCompilerFlag)
 
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -12,5 +12,9 @@ else()
         message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-add_executable(http_server src/main.cpp)
-target_link_libraries(http_server net_static)
+include_directories ("${PROJECT_SOURCE_DIR}/handlers")
+add_subdirectory (handlers)
+
+add_executable(DDS main.cpp)
+target_link_libraries(DDS VersionHandler net_static)
+install (TARGETS DDS DESTINATION bin)
