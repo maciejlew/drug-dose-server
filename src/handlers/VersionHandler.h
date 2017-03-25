@@ -10,23 +10,23 @@
 
 #define DDS_VERSION "0.1.1"
 
+#include "pistache/http.h"
 #include "pistache/endpoint.h"
+#include "pistache/description.h"
 
 using namespace Net;
 
-class VersionHandler : public Http::Handler {
+class VersionHandler {
 public:
 
     VersionHandler();
 
     ~VersionHandler();
 
-    HTTP_PROTOTYPE(VersionHandler)
-
-    void onRequest(const Http::Request& request, Http::ResponseWriter response);
+    void onRequest(const Rest::Request& request, Net::Http::ResponseWriter response);
 
 private:
-
+    
 };
 
 #endif /* VERSIONHANDLER_H */

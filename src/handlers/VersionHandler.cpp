@@ -15,8 +15,6 @@ VersionHandler::~VersionHandler() {
     std::cout << "Destructing VersionHandler" << std::endl;
 }
 
-void VersionHandler::onRequest(const Http::Request& request, Http::ResponseWriter response) {
+void VersionHandler::onRequest(const Rest::Request& request, Net::Http::ResponseWriter response) {
     response.send(Http::Code::Ok, "DDS " DDS_VERSION);
 }
-
-

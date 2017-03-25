@@ -8,10 +8,24 @@
 #include <cstdlib>
 
 #include "pistache/endpoint.h"
+#include "pistache/http.h"
 #include "VersionHandler.h"
+#include "Endpoint.h"
 
 using namespace Net;
 
 int main() {
-    Http::listenAndServe<VersionHandler>("*:9080");
+    
+    Net::Port port(9080);
+
+    int thr = 2;
+
+    Net::Address addr(Net::Ipv4::any(), port);
+
+    Endpoint stats(addr);
+
+    stats.init(thr);
+    stats.start();
+
+    stats.shutdown();
 }

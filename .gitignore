@@ -27,6 +27,7 @@
 *.exe
 *.out
 *.app
+DDS
 
 # cmake
 CMakeFiles/
