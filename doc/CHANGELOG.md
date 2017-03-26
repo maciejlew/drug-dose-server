@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [?.?.?] - ????-??-??
+### Changed
+- version handler renamed to project handler
+
 ## [0.1.2] - 2017-03-26
 ### Changed
 - returns version in JSON format
