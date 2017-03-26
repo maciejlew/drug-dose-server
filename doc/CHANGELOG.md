@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [0.1.2] - 2017-03-26
+### Changed
+- returns version in JSON format
+
 ## [0.1.1] - 2017-03-18
 ### Changed
 - version request handler refactoring

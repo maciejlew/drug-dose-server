@@ -6,6 +6,9 @@
  */
 
 #include "VersionHandler.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+using namespace rapidjson;
 
 VersionHandler::VersionHandler() {
     std::cout << "Constructing VersionHandler" << std::endl;
@@ -16,5 +19,13 @@ VersionHandler::~VersionHandler() {
 }
 
 void VersionHandler::onRequest(const Rest::Request& request, Net::Http::ResponseWriter response) {
-    response.send(Http::Code::Ok, "DDS " DDS_VERSION);
+    StringBuffer s;
+    Writer<StringBuffer> writer(s);
+    writer.StartObject();
+    writer.Key("project");
+    writer.String("DDS");
+    writer.Key("version");
+    writer.String(DDS_VERSION);
+    writer.EndObject();
+    response.send(Http::Code::Ok, s.GetString());
 }
