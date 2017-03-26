@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## [?.?.?] - ????-??-??
+### Added
+- license in project response
+
 ### Changed
 - version handler renamed to project handler
 

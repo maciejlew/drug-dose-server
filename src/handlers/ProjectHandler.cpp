@@ -26,6 +26,8 @@ void ProjectHandler::onRequest(const Rest::Request& request, Net::Http::Response
     writer.String("DDS");
     writer.Key("version");
     writer.String(DDS_VERSION);
+    writer.Key("license");
+    writer.String("MIT");
     writer.EndObject();
     response.send(Http::Code::Ok, s.GetString());
 }
