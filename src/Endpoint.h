@@ -10,7 +10,7 @@
 #define ENDPOINT_H
 
 #include "pistache/endpoint.h"
-#include "handlers/VersionHandler.h"
+#include "handlers/ProjectHandler.h"
 
 class Endpoint
 {
@@ -43,11 +43,11 @@ public:
         
         Rest::Router router;
         std::shared_ptr<Net::Http::Endpoint> httpEndpoint;
-        VersionHandler version_handler;
+        ProjectHandler version_handler;
         
         void setupRoutes() {
             using namespace Net::Rest;
-            Routes::Get(router, "/version", Routes::bind(&VersionHandler::onRequest, &version_handler));
+            Routes::Get(router, "/", Routes::bind(&ProjectHandler::onRequest, &version_handler));
 
         }
 };

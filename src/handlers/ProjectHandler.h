@@ -1,5 +1,5 @@
 /* 
- * File:   VersionHandler.h
+ * File:   ProjectHandler.h
  * Author: Maciej Lew <lion.net.pl>
  *
  * Created on 15 marca 2017, 21:50
@@ -16,12 +16,12 @@
 
 using namespace Net;
 
-class VersionHandler {
+class ProjectHandler {
 public:
 
-    VersionHandler();
+    ProjectHandler();
 
-    ~VersionHandler();
+    ~ProjectHandler();
 
     void onRequest(const Rest::Request& request, Net::Http::ResponseWriter response);
 

@@ -16,5 +16,5 @@ include_directories ("${PROJECT_SOURCE_DIR}/handlers")
 add_subdirectory (handlers)
 
 add_executable(DDS main.cpp)
-target_link_libraries(DDS VersionHandler net_static)
+target_link_libraries(DDS ProjectHandler net_static)
 install (TARGETS DDS DESTINATION bin)
