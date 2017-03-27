@@ -8,7 +8,7 @@
 #ifndef VERSIONHANDLER_H
 #define VERSIONHANDLER_H
 
-#define DDS_VERSION "0.1.1"
+#define DDS_VERSION "0.1.2"
 
 #include "pistache/http.h"
 #include "pistache/endpoint.h"
