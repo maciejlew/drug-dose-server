@@ -24,6 +24,8 @@ void ProjectHandler::onRequest(const Rest::Request& request, Net::Http::Response
     writer.StartObject();
     writer.Key("project");
     writer.String("DDS");
+    writer.Key("full_name");
+    writer.String("Drug Dose Server");
     writer.Key("version");
     writer.String(DDS_VERSION);
     writer.Key("license");

@@ -2,6 +2,7 @@
 
 ## [?.?.?] - ????-??-??
 ### Added
+- full name in project response
 - license in project response
 
 ### Changed
