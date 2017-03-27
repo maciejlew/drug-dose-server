@@ -9,6 +9,9 @@
 #define VERSIONHANDLER_H
 
 #define DDS_VERSION "0.1.2"
+#define DDS_NAME "DDS"
+#define DDS_FULL_NAME "Drug Dose Server"
+#define DDS_LICENSE "MIT"
 
 #include "pistache/http.h"
 #include "pistache/endpoint.h"

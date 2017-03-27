@@ -22,14 +22,14 @@ void ProjectHandler::onRequest(const Rest::Request& request, Net::Http::Response
     StringBuffer s;
     Writer<StringBuffer> writer(s);
     writer.StartObject();
-    writer.Key("project");
-    writer.String("DDS");
+    writer.Key("name");
+    writer.String(DDS_NAME);
     writer.Key("full_name");
-    writer.String("Drug Dose Server");
+    writer.String(DDS_FULL_NAME);
     writer.Key("version");
     writer.String(DDS_VERSION);
     writer.Key("license");
-    writer.String("MIT");
+    writer.String("DDS_LICENSE");
     writer.EndObject();
     response.send(Http::Code::Ok, s.GetString());
 }

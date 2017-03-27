@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [?.?.?] - ????-??-??
+## [0.1.3] - 2017-03-27
 ### Added
 - full name in project response
 - license in project response
