@@ -1,0 +1,14 @@
+[
+    {
+        "id": "example_drug_one",
+        "name": "Drug one"
+    },
+    {
+        "id": "example_drug_two",
+        "name": "Drug two"
+    },
+    {
+        "id": "example_drug_three",
+        "name": "Drug three"
+    }
+]

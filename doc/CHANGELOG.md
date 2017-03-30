@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [?.?.?] - ????-??-??
+### Added
+- configuration file
+- drugs list webservice, drugs list loaded from file
+
 ## [0.1.3] - 2017-03-27
 ### Added
 - full name in project response

@@ -1,0 +1,10 @@
+{
+    "id": "example_drug_two",
+    "name": "Drug Two",
+    "description": "Description of a Drug Two",
+    "dose": {
+        "type": "simple",
+        "a": [0.5, 0.6],
+        "b": 10
+    }
+}
