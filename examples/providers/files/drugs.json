@@ -1,14 +1,14 @@
 [
     {
-        "id": "example_drug_one",
+        "id": "drug_one",
         "name": "Drug one"
     },
     {
-        "id": "example_drug_two",
+        "id": "drug_two",
         "name": "Drug two"
     },
     {
-        "id": "example_drug_three",
+        "id": "drug_three",
         "name": "Drug three"
     }
 ]

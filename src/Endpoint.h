@@ -10,6 +10,7 @@
 #define ENDPOINT_H
 
 #include "pistache/endpoint.h"
+#include "handlers/DrugHandler.h"
 #include "handlers/DrugsHandler.h"
 #include "handlers/ProjectHandler.h"
 
@@ -46,11 +47,13 @@ public:
         std::shared_ptr<Net::Http::Endpoint> httpEndpoint;
         ProjectHandler version_handler;
         DrugsHandler drugs_handler;
+        DrugHandler drug_handler;
         
         void setupRoutes() {
             using namespace Net::Rest;
             Routes::Get(router, "/", Routes::bind(&ProjectHandler::onRequest, &version_handler));
-            Routes::Get(router, "/drugs", Routes::bind(&DrugsHandler::onRequest, &drugs_handler));
+            Routes::Get(router, "/drugs/", Routes::bind(&DrugsHandler::onRequest, &drugs_handler));
+            Routes::Get(router, "/drugs/:id", Routes::bind(&DrugHandler::onRequest, &drug_handler));
         }
 };
 
