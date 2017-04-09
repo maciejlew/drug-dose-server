@@ -43,6 +43,8 @@ void DrugsHandler::onRequest(const Net::Rest::Request& request, Net::Http::Respo
 
             Writer<StringBuffer> writer(drugs_buffer);
             drugs.Accept(writer);
+            
+            response.headers().add<Net::Http::Header::ContentType>(MIME(Application, Json));
 
             response.send(Http::Code::Ok, drugs_buffer.GetString());
             

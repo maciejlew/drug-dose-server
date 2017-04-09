@@ -31,5 +31,6 @@ void ProjectHandler::onRequest(const Rest::Request& request, Net::Http::Response
     writer.Key("license");
     writer.String("DDS_LICENSE");
     writer.EndObject();
+    response.headers().add<Net::Http::Header::ContentType>(MIME(Application, Json));
     response.send(Http::Code::Ok, s.GetString());
 }
