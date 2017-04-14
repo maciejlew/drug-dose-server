@@ -22,9 +22,8 @@ DrugsHandler::~DrugsHandler() {
 
 void DrugsHandler::onRequest(const Net::Rest::Request& request, Net::Http::ResponseWriter response) {
     
-    Document drugs, config;
-    char _drugs_buffer[65536], _config_buffer[65536], _files_path_buffer[65536];
-    StringBuffer drugs_buffer;
+    Document config;
+    char _config_buffer[65536];
     
     FILE* config_pointer = fopen("config.json", "r");
     FileReadStream config_stream(config_pointer, _config_buffer, sizeof(_config_buffer));
@@ -33,24 +32,11 @@ void DrugsHandler::onRequest(const Net::Rest::Request& request, Net::Http::Respo
     
     if (config.HasMember("files_path")) {
         
-        sprintf(_files_path_buffer, "%s/drugs.json", config["files_path"].GetString());
-        FILE* drugs_pointer = fopen(_files_path_buffer, "r");
+        std::ostringstream s;
+        s << config["files_path"].GetString() << "/drugs.json";
         
-        if (drugs_pointer) {
-            FileReadStream drugs_stream(drugs_pointer, _drugs_buffer, sizeof(_drugs_buffer));
-            drugs.ParseStream(drugs_stream);
-            fclose(drugs_pointer);
-
-            Writer<StringBuffer> writer(drugs_buffer);
-            drugs.Accept(writer);
+        Http::serveFile(response, s.str().c_str(), MIME(Application, Json));
             
-            response.headers().add<Net::Http::Header::ContentType>(MIME(Application, Json));
-
-            response.send(Http::Code::Ok, drugs_buffer.GetString());
-            
-        } else {
-            response.send(Http::Code::Internal_Server_Error);
-        }
     } else {
         response.send(Http::Code::Internal_Server_Error);
     }
