@@ -10,6 +10,7 @@
 #define ENDPOINT_H
 
 #include "pistache/endpoint.h"
+#include "handlers/Handler.h"
 #include "handlers/DrugHandler.h"
 #include "handlers/DrugsHandler.h"
 #include "handlers/ProjectHandler.h"
@@ -19,8 +20,11 @@ class Endpoint
     
 public:
     
-    Endpoint(Net::Address addr)
-        : httpEndpoint(std::make_shared<Net::Http::Endpoint>(addr))
+    Endpoint(Net::Address addr, SettingsParser settings)
+        : httpEndpoint(std::make_shared<Net::Http::Endpoint>(addr)), settings(settings),
+        version_handler(settings),
+        drugs_handler(settings),
+        drug_handler(settings)
     {
     }
     
@@ -45,6 +49,9 @@ public:
         
         Rest::Router router;
         std::shared_ptr<Net::Http::Endpoint> httpEndpoint;
+        
+        SettingsParser settings;
+        
         ProjectHandler version_handler;
         DrugsHandler drugs_handler;
         DrugHandler drug_handler;

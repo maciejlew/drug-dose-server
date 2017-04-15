@@ -1,3 +1,4 @@
+add_library(Handler Handler.cpp)
 add_library(ProjectHandler ProjectHandler.cpp)
 add_library(DrugsHandler DrugsHandler.cpp)
 add_library(DrugHandler DrugHandler.cpp)

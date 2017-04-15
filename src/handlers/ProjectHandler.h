@@ -16,15 +16,14 @@
 #include "pistache/http.h"
 #include "pistache/endpoint.h"
 #include "pistache/description.h"
+#include "Handler.h"
 
 using namespace Net;
 
-class ProjectHandler {
+class ProjectHandler : public Handler {
 public:
-
-    ProjectHandler();
-
-    ~ProjectHandler();
+    
+    ProjectHandler(SettingsParser settings) : Handler(settings) {}
 
     void onRequest(const Rest::Request& request, Net::Http::ResponseWriter response);
 

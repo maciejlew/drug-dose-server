@@ -12,9 +12,18 @@
 #include "ProjectHandler.h"
 #include "Endpoint.h"
 
+#include "SettingsParser/SettingsParser.hpp"
+#include <iostream>
+#include <vector>
+
 using namespace Net;
 
 int main() {
+    
+    SettingsParser settings;
+    if (!settings.loadFromFile("dds.ini")) {
+        return -1;
+    }
     
     Net::Port port(9080);
 
@@ -22,7 +31,7 @@ int main() {
 
     Net::Address addr(Net::Ipv4::any(), port);
 
-    Endpoint stats(addr);
+    Endpoint stats(addr, settings);
 
     stats.init(thr);
     stats.start();

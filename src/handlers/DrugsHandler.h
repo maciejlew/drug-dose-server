@@ -12,17 +12,16 @@
 #include "pistache/http.h"
 #include "pistache/endpoint.h"
 #include "pistache/description.h"
+#include "Handler.h"
 
 
 using namespace Net;
 
-class DrugsHandler {
+class DrugsHandler : public Handler {
 public:
 
-    DrugsHandler();
-
-    ~DrugsHandler();
-
+    DrugsHandler(SettingsParser settings) : Handler(settings) {}
+    
     void onRequest(const Rest::Request& request, Net::Http::ResponseWriter response);
 
 private:

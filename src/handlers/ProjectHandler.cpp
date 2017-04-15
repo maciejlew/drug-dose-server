@@ -10,14 +10,6 @@
 #include "rapidjson/stringbuffer.h"
 using namespace rapidjson;
 
-ProjectHandler::ProjectHandler() {
-    std::cout << "Constructing ProjectHandler" << std::endl;
-}
-
-ProjectHandler::~ProjectHandler() {
-    std::cout << "Destructing ProjectHandler" << std::endl;
-}
-
 void ProjectHandler::onRequest(const Rest::Request& request, Net::Http::ResponseWriter response) {
     StringBuffer s;
     Writer<StringBuffer> writer(s);

@@ -12,29 +12,18 @@
 #include <cstdio>
 using namespace rapidjson;
 
-DrugHandler::DrugHandler() {
-    std::cout << "Constructing DrugHandler" << std::endl;
-}
-
-DrugHandler::~DrugHandler() {
-    std::cout << "Destructing DrugHandler" << std::endl;
-}
-
 void DrugHandler::onRequest(const Net::Rest::Request& request, Net::Http::ResponseWriter response) {
-    Document config;
-    char _config_buffer[65536];
     
-    FILE* config_pointer = fopen("config.json", "r");
-    FileReadStream config_stream(config_pointer, _config_buffer, sizeof(_config_buffer));
-    config.ParseStream(config_stream);
-    fclose(config_pointer);
+    std::string files_path;
     
-    if (config.HasMember("files_path")) {
+    getSettings().get("files_path", files_path);
+    
+    if (!files_path.empty()) {
         
         auto id = request.param(":id").as<std::string>();
         
         std::ostringstream s;
-        s << config["files_path"].GetString() << "/" << id << ".json";
+        s << files_path << "/" << id << ".json";
         
         std::cout << s.str() << std::endl;
         

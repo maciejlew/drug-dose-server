@@ -15,6 +15,9 @@ endif()
 include_directories ("${PROJECT_SOURCE_DIR}/handlers")
 add_subdirectory (handlers)
 
+include_directories(/usr/local/include/SettingsParser)
+add_library(SettingsParser /usr/local/include/SettingsParser/SettingsParser.cpp)
+
 add_executable(DDS main.cpp)
-target_link_libraries(DDS ProjectHandler DrugsHandler DrugHandler net_static)
+target_link_libraries(DDS Handler ProjectHandler DrugsHandler DrugHandler SettingsParser net_static)
 install (TARGETS DDS DESTINATION bin)
